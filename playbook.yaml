@@ -1,0 +1,20 @@
+name : Install ngnix
+hosts: all 
+remote_user: Illia
+become: yes 
+
+   tasks :
+   - name: Install ngnix 
+     yum: 
+          name: ngnix 
+          state: latest 
+
+  - name: copy web page template 
+     template: 
+          src: index.html 
+          dest: ./index.html 
+
+  - name: start ngnix
+     service: 
+          name: ngnix
+          state: started
